@@ -1,11 +1,12 @@
 {
+  "homepage": "https://pethiopan.github.io/qrcode",
   "name": "qrcode",
   "private": true,
-  "homepage": "https://pethiopan.github.io/qrcode",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
