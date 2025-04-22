@@ -1,0 +1,76 @@
+{
+  "ASB-ASH BLACK": [
+    "FLAMED"
+  ],
+  "BGM-BEIGE MARBLE": [
+    "CLADDING",
+    "FLOOR",
+    "STAIR",
+    "TABLE TOP"
+  ],
+  "BGX-B GALAXY": [
+    "KITCHEN COUNTERTOP",
+    "TOMBSTONE"
+  ],
+  "BWH-B WHITE": [
+    "CLADDING",
+    "KITCHEN COUNTERTOP",
+    "STAIR"
+  ],
+  "CBG-C GREY": [
+    "COPPING ",
+    "WINDOW SILL"
+  ],
+  "COB-C BLACK": [
+    "STAIR"
+  ],
+  "CVN-C VENATO": [
+    "CLADDING",
+    "KITCHEN COUNTERTOP"
+  ],
+  "FBL-F BLACK": [
+    "BATHROOM SINK",
+    "STAIR"
+  ],
+  "FBR-F BROWN": [
+    "KITCHEN COUNTERTOP"
+  ],
+  "GOLDEN CANYON": [
+    "CLADDING"
+  ],
+  "HBR-H BROWN": [
+    "KITCHEN COUNTERTOP"
+  ],
+  "IMR-I RED": [
+    "TOMBSTONE"
+  ],
+  "LBU-L BLUE": [
+    "CLADDING ",
+    "STAIR"
+  ],
+  "M BLACK": [
+    "FLOOR"
+  ],
+  "PLW-P WHITE": [
+    "FLOOR",
+    "STAIR"
+  ],
+  "RIV-RIVER WHITE": [
+    "STAIR",
+    "TABLE TOP"
+  ],
+  "SBL-S BLUE": [
+    "FLOOR"
+  ],
+  "SGD-S GOLD": [
+    "KITCHEN COUNTERTOP",
+    "TOMBSTONE"
+  ],
+  "VBL-V BLUE": [
+    "STAIR"
+  ],
+  "VGR-V GREEN": [
+    "DOOR SILL",
+    "STAIRS"
+  ]
+}

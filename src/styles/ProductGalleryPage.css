@@ -1,0 +1,12 @@
+.product-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-rows: repeat(auto, 15vw); */
+    grid-gap: 15px;
+}
+
+.product-gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
