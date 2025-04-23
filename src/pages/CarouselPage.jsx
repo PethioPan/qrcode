@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
-import { productExamplesData } from '../../public/productExamplesData.js';
+import { productExamplesData } from '../scripts/productExamplesData.js';
 
 const CarouselPage = () => {
     const location = useLocation();
@@ -64,7 +64,7 @@ const CarouselPage = () => {
                     <SwiperSlide key={index}>
                         <div style={{ textAlign: 'center' }}>
                             <img
-                                src={imageInfo.src}
+                                src={`${import.meta.env.BASE_URL}/${imageInfo.src}`}
                                 alt={`${imageInfo.productName} - ${productType} Example ${index + 1}`}
                                 style={{
                                     width: '100%',

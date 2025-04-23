@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const examplesBasePath = path.join(__dirname, `../../public/assets/product_examples`);
-const outputFilePath = path.join(__dirname, '../../public/productExamplesData.js');
+const outputFilePath = path.join(__dirname, './productExamplesData.js');
 const availableTypesFilePath = path.join(__dirname, '../../public/availableProductTypes.json');
 
 const availableTypesByProduct = {};
@@ -38,8 +38,9 @@ try {
                     productExamplesData[uppercaseType] = [];
                 }
                 imageFiles.forEach(file => {
+                    const deployedSrcPath = path.join('assets/product_examples', productFolder, type, file).replace(/\\/g, '/');
                     productExamplesData[uppercaseType].push({
-                        src: `/product_examples/${productFolder}/${type}/${file}`,
+                        src: deployedSrcPath,
                         productName: productFolder,
                     });
                 });
