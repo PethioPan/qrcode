@@ -19,7 +19,7 @@ export default function HomePage() {
                 {
                     productsData.map(product => {
                         const productId = `${product.codename}-${product.name}`;
-                        const productImage = `${import.meta.env.BASE_URL}/assets/product_images/${productId}.webp`;
+                        const productImage = `${import.meta.env.BASE_URL}assets/product_images/${productId}.webp`;
                         console.log(productImage);
 
                         return (

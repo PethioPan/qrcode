@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import "../styles/ProductGalleryDetailPage.css";
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faStairs,
@@ -37,7 +36,7 @@ const ProductGalleryDetailPage = () => {
     useEffect(() => {
         const fetchAvailableTypes = async () => {
             try {
-                const response = await fetch('/availableProductTypes.json');
+                const response = await fetch(`${import.meta.env.BASE_URL}availableProductTypes.json`);
                 if (response.ok) {
                     const data = await response.json();
                     setAvailableTypesByProductData(data);
@@ -63,7 +62,7 @@ const ProductGalleryDetailPage = () => {
         );
     }
     const productIdForUrl = `${product.codename}-${product.name}`;
-    const productImage = `../../assets/product_images/${productIdForUrl}.webp`;
+    const productImage = `${import.meta.env.BASE_URL}assets/product_images/${productIdForUrl}.webp`;
     const capitalize = (str) => {
         if (!str || typeof str !== 'string') return '';
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
