@@ -1,52 +1,27 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Page Not Found</title>
-    <script type="text/javascript">
-      // Get the current URL path
-      var path = window.location.pathname;
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Page Not Found</title>
+  <script type="text/javascript">
+    // Get the base URL path from GitHub Pages (e.g., /qrcode/)
+    var basepath = '{{ site.baseurl }}';
+    // Fallback for local testing if Liquid tag doesn't process
+    if (!basepath || basepath === '/') {
+      basepath = '/qrcode/'; // <-- Manually set your repo name here as a fallback
+    }
+    // Ensure basepath ends with a slash
+    if (!basepath.endsWith('/')) {
+      basepath += '/';
+    }
 
-      // Get the base path defined in your homepage (e.g., /qrcode/)
-      // This assumes your homepage is correctly set in package.json
-      var basepath = new URL(window.location.origin + '{{ site.baseurl }}').pathname;
+    // Redirect to the base URL. React Router will handle the rest.
+    window.location.replace(basepath);
 
-      // Construct the redirect URL to your index.html, preserving the path after the base
-      // This handles both user pages (/) and project pages (/repo-name/)
-      // It appends the original path as a query parameter, or just redirects to the root
-      // The client-side router should be configured to read this parameter or handle the path directly
-      // A simpler approach for many cases:
-      var redirectPath = basepath; // Just redirect to the root of the app
-      if (basepath.endsWith('/')) {
-         basepath = basepath.slice(0, -1); // Remove trailing slash if present
-      }
-       // Simple redirect to the root, letting react-router handle the path
-      window.location.replace(basepath + '/');
-
-
-      // A more complex version attempt to preserve path (often requires router config):
-      // var segments = path.split('/');
-      // // Find the segment that matches your repo name
-      // var repoSegmentIndex = segments.indexOf('qrcode'); // <-- Replace 'qrcode' with your repo name if needed
-      // if (repoSegmentIndex > -1 && repoSegmentIndex < segments.length -1) {
-      //   // If repo name is found and it's not the last segment,
-      //   // assume path starts after it (e.g. /user.github.io/qrcode/about -> /about)
-      //   var subPath = segments.slice(repoSegmentIndex + 1).join('/');
-      //   redirectPath = basepath + '#' + subPath; // Use hash routing if configured
-      //   // Or if using browserHistory:
-      //   // redirectPath = basepath + '/?p=' + encodeURIComponent(subPath);
-      //   // window.location.replace(redirectPath);
-      // } else {
-      //    window.location.replace(basepath + '/'); // Redirect to root if no subpath or on root
-      // }
-
-       // Let's stick to the simplest common solution first:
-       window.location.replace(basepath + '/');
-
-
-    </script>
-  </head>
-  <body>
-    <p>Redirecting...</p>
-  </body>
+  </script>
+</head>
+<body>
+<p>Redirecting...</p>
+<a href="/qrcode/">Go to Homepage</a> {/* Fallback link */}
+</body>
 </html>
