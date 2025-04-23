@@ -39,7 +39,7 @@ try {
                 }
                 imageFiles.forEach(file => {
                     productExamplesData[uppercaseType].push({
-                        src: `/assets/product_examples/${productFolder}/${type}/${file}`,
+                        src: `../../public/assets/product_examples/${productFolder}/${type}/${file}`,
                         productName: productFolder,
                     });
                 });
