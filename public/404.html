@@ -4,24 +4,24 @@
   <meta charset="utf-8">
   <title>Page Not Found</title>
   <script type="text/javascript">
-    // Get the base URL path from GitHub Pages (e.g., /qrcode/)
-    var basepath = '{{ site.baseurl }}';
-    // Fallback for local testing if Liquid tag doesn't process
-    if (!basepath || basepath === '/') {
-      basepath = '/qrcode/'; // <-- Manually set your repo name here as a fallback
-    }
-    // Ensure basepath ends with a slash
-    if (!basepath.endsWith('/')) {
-      basepath += '/';
-    }
+    // Hardcoded repository name for the base path
+    // !! REPLACE 'qrcode' with your EXACT GitHub repository name !!
+    var repositoryName = 'qrcode';
 
-    // Redirect to the base URL. React Router will handle the rest.
+    // Construct the base path dynamically using the current domain and the repo name
+    // Example: https://user.github.io + / + qrcode + /  -> https://user.github.io/qrcode/
+    var basepath = window.location.origin + '/' + repositoryName + '/';
+
+    // Use window.location.replace() to redirect. This is better than window.location.assign()
+    // for redirects as it prevents the 404 page from being in the browser history.
     window.location.replace(basepath);
+
+    // The fallback link below is just a manual option if the script fails or is disabled.
 
   </script>
 </head>
 <body>
 <p>Redirecting...</p>
-<a href="/qrcode/">Go to Homepage</a> {/* Fallback link */}
+<a href="/qrcode/">Go to Homepage</a>
 </body>
 </html>
