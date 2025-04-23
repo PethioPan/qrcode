@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const examplesBasePath = path.join(__dirname, '../../public/assets/product_examples');
-const outputFilePath = path.join(__dirname, '../productExamplesData.js');
+const examplesBasePath = path.join(__dirname, `../../public/assets/product_examples`);
+const outputFilePath = path.join(__dirname, '../../public/productExamplesData.js');
 const availableTypesFilePath = path.join(__dirname, '../../public/availableProductTypes.json');
 
 const availableTypesByProduct = {};

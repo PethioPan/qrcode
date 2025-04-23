@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
-import { productExamplesData } from '../productExamplesData';
+import { productExamplesData } from '../../public/productExamplesData.js';
 
 const CarouselPage = () => {
     const location = useLocation();
