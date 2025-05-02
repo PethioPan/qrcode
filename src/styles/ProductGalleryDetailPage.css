@@ -2,7 +2,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #f0f0f0;
+    padding: 0 8rem;
+    min-height: 100vh;
 }
+
+.product-gallery-detail-title {
+    width: 100%;
+    padding-top: 2rem;
+}
+
 .product-gallery-detail h3 {
     color: grey;
 }
@@ -26,4 +35,16 @@
     list-style: none;
     align-items: center;
     justify-content: center;
+}
+
+.product-gallery-detail-icons-list li {
+    transition: all 0.3s ease;
+}
+
+.product-gallery-detail-icons-list li a {
+    text-decoration: none;
+}
+
+.product-gallery-detail-icons-list li:hover {
+    scale: 1.1;
 }

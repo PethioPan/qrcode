@@ -1,13 +1,17 @@
 import { useLocation } from 'react-router-dom';
+import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
 import { productExamplesData } from '../scripts/productExamplesData.js';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css';
+import '../styles/CarouselPage.css';
 
 const CarouselPage = () => {
     const location = useLocation();
+    const swiperRef = useRef(null);
+    const [activeIndex, setActiveIndex] = useState(0);
 
     const queryParams = new URLSearchParams(location.search);
     const productType = queryParams.get('type');
@@ -15,7 +19,7 @@ const CarouselPage = () => {
 
     if (!productType) {
         return (
-            <div style={{ padding: '20px', textAlign: 'center' }}>
+            <div className="carousel-modal-error">
                 <h2>Error</h2>
                 <p>Product type not specified in URL query parameter (e.g., ?type=STAIR).</p>
             </div>
@@ -34,50 +38,57 @@ const CarouselPage = () => {
 
     if (filteredImages.length === 0) {
         return (
-            <div style={{ padding: '20px', textAlign: 'center' }}>
-                <h2 style={{ textTransform: 'capitalize' }}>{pageTitle} Examples</h2>
+            <div className="carousel-modal-empty">
+                <h2>{pageTitle} Examples</h2>
                 <p>No examples found for this product type.</p>
             </div>
         );
     }
 
     return (
-        <div style={{ padding: '20px' }}>
-            <h2 style={{ textAlign: 'center', marginBottom: '20px', textTransform: 'capitalize' }}>
+        <div className="carousel-modal">
+            <h2 className="carousel-modal-title">
                 {pageTitle} Examples for {productName}
             </h2>
             <Swiper
                 modules={[Navigation, Pagination]}
                 spaceBetween={30}
                 slidesPerView={1}
-                breakpoints={{
-                    640: { slidesPerView: 2, spaceBetween: 20 },
-                    768: { slidesPerView: 3, spaceBetween: 30 },
-                    1024: { slidesPerView: 4, spaceBetween: 40 },
-                }}
                 navigation
                 pagination={{ clickable: true }}
                 loop={filteredImages.length > 3}
-                style={{ paddingBottom: '40px', height: '35vw' }}
+                style={{ flex: 1, width: '100vw', height: '100%' }}
+                onSwiper={(swiper) => { swiperRef.current = swiper; }}
+                onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                initialSlide={0}
             >
                 {filteredImages.map((imageInfo, index) => (
                     <SwiperSlide key={index}>
-                        <div style={{ textAlign: 'center' }}>
+                        <div className="carousel-slide-content">
                             <img
                                 src={`${import.meta.env.BASE_URL}/${imageInfo.src}`}
                                 alt={`${imageInfo.productName} - ${productType} Example ${index + 1}`}
-                                style={{
-                                    width: '100%',
-                                    height: '600px',
-                                    objectFit: 'cover',
-                                    display: 'block'
-                                }}
+                                className="carousel-slide-image"
                                 loading="lazy"
                             />
                         </div>
                     </SwiperSlide>
                 ))}
             </Swiper>
+            {/* Thumbnails */}
+            <div className="carousel-thumbnails">
+                {filteredImages.map((imageInfo, idx) => (
+                    <img
+                        key={idx}
+                        src={`${import.meta.env.BASE_URL}/${imageInfo.src}`}
+                        alt={`Thumbnail ${idx + 1}`}
+                        className={`carousel-thumbnail${idx === activeIndex ? ' active' : ''}`}
+                        onClick={() => {
+                            swiperRef.current?.slideToLoop(idx);
+                        }}
+                    />
+                ))}
+            </div>
         </div>
     );
 };

@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "deploy": "gh-pages -d build",
+    "predev": "node ./src/scripts/generateProductExamples.js",
     "dev": "vite",
     "prebuild": "node ./src/scripts/generateProductExamples.js",
     "build": "vite build",
@@ -13,9 +14,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mui/icons-material": "^7.0.2",
+    "@mui/material": "^7.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1",

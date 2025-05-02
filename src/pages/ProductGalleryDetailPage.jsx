@@ -1,30 +1,30 @@
 import { useState, useEffect } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import "../styles/ProductGalleryDetailPage.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faStairs,
-    faRulerHorizontal,
-    faColumns,
-    faWindowMaximize,
-    faDoorOpen,
-    faSink,
-    faTable,
-    faMonument,
-    faBorderAll,
-} from '@fortawesome/free-solid-svg-icons';
+    Stairs as StairsIcon,
+    Straighten as FloorIcon,
+    ViewColumn as CladdingIcon,
+    Window as WindowSillIcon,
+    DoorFront as DoorSillIcon,
+    Kitchen as KitchenCountertopIcon,
+    TableBar as TableTopIcon,
+    Bathroom as BathroomSinkIcon,
+    AccountBalance as TombstoneIcon,
+    BorderAll as CoppingIcon,
+} from '@mui/icons-material';
 
 const iconLinksBase = [
-    { icon: faStairs, type: "STAIR", alt: "Stair Examples" },
-    { icon: faRulerHorizontal, type: "FLOOR", alt: "Floor Examples" }, // Consider faRulerHorizontal
-    { icon: faColumns, type: "CLADDING", alt: "Cladding Examples" }, // Consider faBrickWall or faCube
-    { icon: faWindowMaximize, type: "WINDOW SILL", alt: "Window Sill Examples" },
-    { icon: faDoorOpen, type: "DOOR SILL", alt: "Door Sill Examples" },
-    { icon: faSink, type: "KITCHEN COUNTERTOP", alt: "Kitchen Countertop Examples" },
-    { icon: faTable, type: "TABLE TOP", alt: "Table Top Examples" },
-    { icon: faSink, type: "BATHROOM SINK", alt: "Bathroom Sink Examples" },
-    { icon: faMonument, type: "TOMBSTONE", alt: "Tombstone Examples" }, // Consider faCross
-    { icon: faBorderAll, type: "COPPING", alt: "Copping Examples" },   // Consider faOutdent
+    { icon: <StairsIcon fontSize="large" />, type: "STAIR", alt: "Stair Examples" },
+    { icon: <FloorIcon fontSize="large" />, type: "FLOOR", alt: "Floor Examples" },
+    { icon: <CladdingIcon fontSize="large" />, type: "CLADDING", alt: "Cladding Examples" },
+    { icon: <WindowSillIcon fontSize="large" />, type: "WINDOW SILL", alt: "Window Sill Examples" },
+    { icon: <DoorSillIcon fontSize="large" />, type: "DOOR SILL", alt: "Door Sill Examples" },
+    { icon: <KitchenCountertopIcon fontSize="large" />, type: "KITCHEN COUNTERTOP", alt: "Kitchen Countertop Examples" },
+    { icon: <TableTopIcon fontSize="large" />, type: "TABLE TOP", alt: "Table Top Examples" },
+    { icon: <BathroomSinkIcon fontSize="large" />, type: "BATHROOM SINK", alt: "Bathroom Sink Examples" },
+    { icon: <TombstoneIcon fontSize="large" />, type: "TOMBSTONE", alt: "Tombstone Examples" },
+    { icon: <CoppingIcon fontSize="large" />, type: "COPPING", alt: "Copping Examples" },
 ];
 
 const ProductGalleryDetailPage = () => {
@@ -74,13 +74,15 @@ const ProductGalleryDetailPage = () => {
 
     return (
         <div className='product-gallery-detail'>
-            <h3>{capitalize(product.type)}</h3>
-            <h1>{product.name}</h1>
+            <div className='product-gallery-detail-title'>
+                <h3>{capitalize(product.type)}</h3>
+                <h1>{product.name}</h1>
+            </div>
             <div className='product-gallery-detail-hero'>
                 <img
                     src={productImage}
                     alt={`${product.name}`}
-                    className='product-gallery-image'
+                    className='product-gallery-detail-image'
                     onError={(e) => { e.target.style.display = 'none'; }}
                     loading="lazy"
                 />
@@ -92,7 +94,7 @@ const ProductGalleryDetailPage = () => {
                                     to={`/product-gallery/${id}/carousel?type=${type}`}
                                     state={{ productIdForUrl: productIdForUrl }}
                                     title={alt}>
-                                    <FontAwesomeIcon icon={icon} size="3x" />
+                                    {icon}
                                     <h3>{type.toLowerCase().split((" ")).map(word => (capitalize(word))).join(" ")}</h3>
                                 </Link>
                             </li>
